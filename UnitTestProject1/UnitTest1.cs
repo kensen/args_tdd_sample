@@ -13,16 +13,12 @@ namespace UnitTestProject1
         [TestMethod]
         public void TestMethod1()
         {
-            List<ParamSchema> testList = new List<ParamSchema>();
-            testList.Add(new ParamSchema() {Flag = "l", Type = typeof(bool), Default=true });
+           string testString = "-l -p 8080 -d /usr/logs";
+            //string testString = "-l true";
 
-           // string testString = "-l -p 8080 -d /usr/logs";
-            string testString = "-l true";
-
-            foreach (var item in new Parser().GetParam(testString))
-            {
-                     Assert.IsInstanceOfType(item.Value, testList.FirstOrDefault(a => a.Flag==item.Flag)?.Type);
-            }
+            Assert.AreEqual(true,new Parser().GetParam(testString,"l").Value);
+            Assert.AreEqual(8080, new Parser().GetParam(testString,"p").Value);
+           
         }
     }
 }

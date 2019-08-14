@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace Args_tdd_sample
 {
@@ -6,8 +8,20 @@ namespace Args_tdd_sample
     {
         static void Main(string[] args)
         {
-            var type = typeof(int);
-            Console.WriteLine("Hello World!");
+            
+
+          Type type = Type.GetType("System.String[]");
+
+         // Type type = typeof(string[]);
+
+          var n = type.FullName;
+
+              var q = Expression.Parameter(type, "l");
+
+          var t=  Convert.ChangeType("false", q.Type);
+
+            Console.WriteLine( t);
+            Console.Read();
         }
     }
 }
