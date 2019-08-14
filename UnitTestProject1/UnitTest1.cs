@@ -16,8 +16,9 @@ namespace UnitTestProject1
            string testString = "-l -p 8080 -d /usr/logs";
             //string testString = "-l true";
 
-            Assert.AreEqual(true,new Parser().GetParam(testString,"l").Value);
-            Assert.AreEqual(8080, new Parser().GetParam(testString,"p").Value);
+            Assert.AreEqual(true,new Parser(testString).GetParam("l").Value);
+            Assert.AreEqual(8080, new Parser(testString).GetParam("p").Value);
+            Assert.AreEqual("/usr/logs", new Parser(testString).GetParam("d").Value);
            
         }
     }

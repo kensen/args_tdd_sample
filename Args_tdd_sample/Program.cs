@@ -8,19 +8,16 @@ namespace Args_tdd_sample
     {
         static void Main(string[] args)
         {
-            
+            Console.WriteLine("参数解析：请输入一条命令");
+            string cmdLine= Console.ReadLine();
 
-          Type type = Type.GetType("System.String[]");
+            foreach (var item in cmdLine.Split("-"))
+            {
+                var p = item.Split(" ");
+                var t = new Parser(cmdLine).GetParam(p[0]);
+                Console.WriteLine($"{p[0]}:{t.Value}  ,type:{t.Value.GetType().FullName}");
+            }
 
-         // Type type = typeof(string[]);
-
-          var n = type.FullName;
-
-              var q = Expression.Parameter(type, "l");
-
-          var t=  Convert.ChangeType("false", q.Type);
-
-            Console.WriteLine( t);
             Console.Read();
         }
     }

@@ -29,6 +29,7 @@ namespace Args_tdd_sample
             if (schema == null)
             {
                 result.Value = "未定义该标记！";
+                return result;
             }
 
             var p= pStr.Split(" ");
